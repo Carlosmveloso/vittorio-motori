@@ -1,0 +1,92 @@
+.financiamento-container {
+  width: 100%;
+  max-width: 1100px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+/* ---------- Tipografia comum ---------- */
+.financiamento-eyebrow {
+  margin: 0 0 1rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.financiamento-titulo,
+.financiamento-secao-titulo {
+  margin: 0;
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--text);
+}
+
+.financiamento-titulo { font-size: clamp(2.25rem, 7vw, 3.5rem); }
+.financiamento-secao-titulo { font-size: clamp(1.75rem, 5vw, 2.25rem); }
+
+.financiamento-titulo em,
+.financiamento-secao-titulo em {
+  font-family: "Instrument Serif", serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.financiamento-sub {
+  margin: 1rem 0 0;
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+}
+
+/* ---------- Hero ---------- */
+.financiamento-hero {
+  padding-block: 3.5rem 2.5rem;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ---------- Formas de pagamento ---------- */
+.financiamento-formas {
+  padding-block: 3rem;
+  background: var(--bg);
+}
+
+.financiamento-grid-3 {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+.financiamento-card {
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+}
+
+.financiamento-icone {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-muted);
+  background: var(--bg-section);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+}
+
+.financiamento-card-titulo {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.financiamento-card-texto {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
