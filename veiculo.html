@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes do Veículo | Vittorio Motori</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/veiculo.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Vittorio Motori</a>
+      <nav aria-label="Menu principal">
+        <ul class="nav-list">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="estoque.html" aria-current="page">Estoque</a></li>
+          <li><a href="financiamento.html">Financiamento</a></li>
+          <li><a href="teste-drive.html">Test Drive</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+      <a href="teste-drive.html" class="btn btn-primary btn-sm">Agendar test drive</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="veiculo-breadcrumb" aria-label="Você está em">
+      <a href="estoque.html">Estoque</a> / <span id="veiculo-crumb"></span>
+    </nav>
+
+    <p id="veiculo-erro" class="veiculo-erro" hidden>Veículo não encontrado. <a href="estoque.html">Voltar ao estoque</a></p>
+
+    <section id="veiculo-conteudo" class="veiculo-grid">
+      <div class="veiculo-galeria">
+        <figure class="veiculo-principal">
+          <img id="veiculo-foto" alt="">
+          <figcaption>Foto principal</figcaption>
+        </figure>
+        <div id="veiculo-thumbs" class="veiculo-thumbs"></div>
+      </div>
+
+      <div class="veiculo-info">
+        <div class="veiculo-selos">
+          <span class="veiculo-selo" id="veiculo-selo"></span>
+          <span class="veiculo-selo veiculo-selo-status" id="veiculo-status"></span>
+        </div>
+        <h1 id="veiculo-titulo"></h1>
+        <p class="veiculo-resumo" id="veiculo-resumo"></p>
+        <p class="veiculo-preco-label">Preço</p>
+        <p class="veiculo-preco" id="veiculo-preco"></p>
+
+        <a id="veiculo-testdrive" class="btn btn-primary" href="teste-drive.html">Agendar test drive →</a>
+        <a id="veiculo-whats" class="btn btn-outline" href="#" target="_blank" rel="noopener">Falar no WhatsApp</a>
+
+        <section class="veiculo-ficha-box" aria-labelledby="ficha-titulo">
+          <h2 id="ficha-titulo">Ficha técnica</h2>
+          <dl id="veiculo-ficha"></dl>
+        </section>
+      </div>
+    </section>
+
+    <section class="veiculo-detalhes" aria-labelledby="detalhes-titulo">
+      <h2 id="detalhes-titulo">Especificações <em>completas</em></h2>
+      <dl id="veiculo-detalhes"></dl>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="logo">Vittorio Motori</a>
+        <p class="muted">Carros novos e seminovos selecionados, com atendimento próximo do primeiro contato à entrega da chave.</p>
+      </div>
+      <div>
+        <h3>Navegação</h3>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="estoque.html">Estoque</a></li>
+          <li><a href="financiamento.html">Financiamento</a></li>
+          <li><a href="teste-drive.html">Test Drive</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Atendimento</h3>
+        <p>Segunda a sábado<br>8h às 18h<br>(85) 0000-0000</p>
+      </div>
+      <div>
+        <h3>Endereço</h3>
+        <p>Avenida Exemplo, 1000<br>Fortaleza, Ceará</p>
+        <a href="https://wa.me/5585000000000" class="btn btn-outline btn-sm" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+      </div>
+    </div>
+    <p class="container footer-base">
+      <span>© 2026 Vittorio Motori · Projeto acadêmico</span>
+      <span>Feito com HTML, CSS e JavaScript</span>
+    </p>
+  </footer>
+
+  <script src="js/veiculo.js"></script>
+</body>
+</html>
