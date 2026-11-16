@@ -90,3 +90,46 @@
   line-height: 1.5;
   color: var(--text-muted);
 }
+
+/* ---------- Passo a passo ---------- */
+.financiamento-passos {
+  padding-block: 3.5rem;
+  background: var(--bg-section);
+}
+
+.financiamento-lista-passos {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.financiamento-passo {
+  padding-top: 1rem;
+  border-top: 2px solid var(--border);
+}
+
+.financiamento-passo-num {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-family: "Instrument Serif", serif;
+  font-style: italic;
+  font-size: 1.75rem;
+  color: var(--text-muted);
+}
+
+.financiamento-passo-titulo {
+  margin: 0 0 0.375rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.financiamento-passo-texto {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
