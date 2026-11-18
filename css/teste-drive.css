@@ -1,0 +1,21 @@
+
+.header { border-bottom: 1px solid var(--border); }
+.header__inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 96px; padding-inline: max(120px, calc((100% - 1440px) / 2 + 120px)); }
+.logo { font-family: var(--serif); font-style: italic; font-size: 28px; }
+.nav { display: flex; gap: 32px; font-size: 13px; }
+.nav a[aria-current] { padding: 4px 0; border-bottom: 1px solid var(--text); }
+
+.btn { display: inline-flex; justify-content: center; align-items: center; border: 0; border-radius: 999px; padding: 14px 24px; font: 500 14px var(--sans); cursor: pointer; transition: opacity .2s; }
+.btn--light { background: var(--text); color: var(--bg); }
+.btn--light:hover { opacity: .88; }
+.btn--sm { padding: 10px 18px; font-size: 13px; }
+.btn--block { width: 100%; }
+
+
+.agendamento {
+  display: flex;
+  align-items: flex-start;
+  gap: 80px;
+  width: 100%;
+  padding: 80px max(120px, calc((100% - 1440px) / 2 + 120px)) 96px;
+}
