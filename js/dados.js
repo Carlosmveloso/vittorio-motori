@@ -1,23 +1,4 @@
-// =============================================================
-// Vittorio Motori · Dados dos veículos
-// -------------------------------------------------------------
-// Este arquivo guarda só os dados. Quem monta a página é o
-// js/veiculo.js, que deve ser carregado depois deste arquivo.
-//
-// Para adicionar um carro, copie um objeto do array "veiculos",
-// mude o id (único) e preencha os campos:
-//   id          número único, usado no link veiculo.html?id=N
-//   marca       ex.: 'Toyota'
-//   modelo      ex.: 'Corolla'
-//   ano         número (2024) ou texto ('2026/2027')
-//   km          número sem pontos (36856). Use 0 para carro novo
-//   preco       número sem pontos e sem R$ (73482)
-//   cambio, combustivel, cor, categoria
-//   status      'Disponível' ou 'Indisponível'
-//   detalhes    especificações; o nome de cada campo precisa
-//               existir em ROTULOS (mais abaixo)
-//   fotos       até 3 caminhos; o primeiro é a foto principal
-// =============================================================
+
 
 const veiculos = [
   {
@@ -432,9 +413,6 @@ const veiculos = [
     ],
   },
 ];
-
-// Nomes exibidos na seção "Especificações completas" para cada
-// campo de "detalhes". Campo novo em detalhes = linha nova aqui.
 const ROTULOS = {
   motor: 'Motor',
   torque: 'Torque',

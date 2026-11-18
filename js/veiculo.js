@@ -1,12 +1,3 @@
-// =============================================================
-// Vittorio Motori · Página de veículo
-// -------------------------------------------------------------
-// Monta a página veiculo.html a partir dos dados de js/dados.js.
-// Usa as funções de js/main.js (formatarPreco, nomeCompleto...).
-// Ordem no HTML: main.js → dados.js → veiculo.js
-// O carro é escolhido pelo id no link: veiculo.html?id=3
-// =============================================================
-
 const MAX_FOTOS = 3;
 
 // ---------- Busca do veículo ----------------------------------
@@ -17,9 +8,7 @@ function buscarVeiculo() {
   return veiculos.find((item) => item.id === id);
 }
 
-// ---------- Partes da página ----------------------------------
 
-// Cria as linhas <dt>/<dd> de uma lista de pares [rótulo, valor].
 function preencherLista(elemento, pares) {
   elemento.replaceChildren(
     ...pares.map(([rotulo, valor]) => {
@@ -83,8 +72,6 @@ function mostrarDetalhes(v) {
   preencherLista($('veiculo-detalhes'), pares);
 }
 
-// A foto principal não se repete nas miniaturas: ao clicar numa
-// miniatura, ela troca de lugar com a principal.
 function mostrarGaleria(v) {
   const fotos = v.fotos.slice(0, MAX_FOTOS);
 
@@ -120,11 +107,8 @@ function mostrarContato(v) {
   $('veiculo-testdrive').href = `teste-drive.html?id=${v.id}`;
   $('veiculo-whats').href = linkWhatsApp(
     `Olá! Tenho interesse no ${nomeCompleto(v)}.`,
-  );
+  )
 }
-
-// ---------- Início --------------------------------------------
-
 function iniciar() {
   const v = buscarVeiculo();
 
@@ -142,3 +126,51 @@ function iniciar() {
 }
 
 iniciar();
+
+
+
+const IMG_PADRAO = 'img/carro-placeholder.svg';
+const WHATSAPP = '5585000000000';
+
+const $ = (id) => document.getElementById(id);
+
+
+
+function formatarPreco(valor) {
+  return valor.toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+    maximumFractionDigits: 0,
+  });
+}
+
+
+function formatarKm(km) {
+  return km === 0 ? '0 km' : `${km.toLocaleString('pt-BR')} km`;
+}
+
+
+
+function estaDisponivel(veiculo) {
+  return veiculo.status.toLowerCase() === 'disponível';
+}
+
+function nomeCompleto(veiculo) {
+  return `${veiculo.marca} ${veiculo.modelo} ${veiculo.ano}`;
+}
+
+function linkWhatsApp(mensagem) {
+  return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(mensagem)}`;
+}
+
+function usarImagemPadraoSeFalhar(img) {
+  img.onerror = () => {
+    img.onerror = null;
+    img.src = IMG_PADRAO;
+  };
+}
+
+
+document.querySelectorAll('.ano-atual').forEach((el) => {
+  el.textContent = new Date().getFullYear();
+});
