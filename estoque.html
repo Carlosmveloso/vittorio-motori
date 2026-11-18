@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/estoque.css" />
+    <title>Estoque | Vittorio Motori</title>
+  </head>
+  <body>
+    <!-- Menu (o mesmo das outras páginas) -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="index.html" class="logo">Vittorio Motori</a>
+        <nav aria-label="Menu principal">
+          <ul class="nav-list">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="estoque.html" aria-current="page">Estoque</a></li>
+            <li><a href="financiamento.html">Financiamento</a></li>
+            <li><a href="teste-drive.html">Test Drive</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="contato.html">Contato</a></li>
+          </ul>
+        </nav>
+        <a href="teste-drive.html" class="btn btn-primary btn-sm">Agendar test drive</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="estoque-titulo">
+        <p class="estoque-titulo_page">Estoque</p>
+        <h1>Nosso <span>estoque</span></h1>
+        <p class="estoque-titulo_description">
+          Conheça todos os veículos disponíveis na Vittorio Motori.
+        </p>
+      </section>
+
+      <!-- Listagem (os cards são criados pelo js/estoque.js) -->
+      <section class="listagem" aria-label="Listagem de veículos">
+        <p id="listagem-total" class="listagem-info"></p>
+        <div id="listagem-carros" class="listagem-carros"></div>
+        <p id="listagem-vazia" class="listagem-vazia" hidden>
+          Nenhum veículo disponível no momento.
+        </p>
+      </section>
+    </main>
+
+    <!-- Rodapé (o mesmo das outras páginas) -->
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a href="index.html" class="logo">Vittorio Motori</a>
+          <p class="muted">Carros novos e seminovos selecionados, com atendimento próximo do primeiro contato à entrega da chave.</p>
+        </div>
+        <div>
+          <h3>Navegação</h3>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="estoque.html">Estoque</a></li>
+            <li><a href="financiamento.html">Financiamento</a></li>
+            <li><a href="teste-drive.html">Test Drive</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="contato.html">Contato</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Atendimento</h3>
+          <p>Segunda a sábado<br>8h às 18h<br>(85) 0000-0000</p>
+        </div>
+        <div>
+          <h3>Endereço</h3>
+          <p>Avenida Exemplo, 1000<br>Fortaleza, Ceará</p>
+          <a href="https://wa.me/5585000000000" class="btn btn-outline btn-sm" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+        </div>
+      </div>
+      <p class="container footer-base">
+        <span>© <span class="ano-atual">2026</span> Vittorio Motori · Projeto acadêmico</span>
+        <span>Feito com HTML, CSS e JavaScript</span>
+      </p>
+    </footer>
+    <script src="js/dados.js"></script>
+    <script src="js/estoque.js"></script>
+  </body>
+</html>
