@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test Drive | Vittorio Motori</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="moto.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <a href="index.html" class="logo">Vittorio Motori</a>
+      <nav class="nav" aria-label="Principal">
+        <a href="test-drive.html" aria-current="page">Test Drive</a>
+      </nav>
+      <a href="test-drive.html" class="btn btn--light btn--sm">Agendar test drive</a>
+    </div>
+  </header>
+
+  <main class="agendamento">
+    <div class="texto">
+      <p class="texto__label">Test Drive</p>
+      <h1>Agende seu <em>test drive</em></h1>
+      <p class="texto__desc">Escolha o carro, a data e o horário. Nossa equipe confirma o agendamento com você.</p>
+
+      <ul class="regras">
+        <li class="regra">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M8 3v4M16 3v4"/></svg></span>
+          <div><strong>Segunda a sábado</strong><span>Atendimento das 8h às 18h.</span></div>
+        </li>
+        <li class="regra">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg></span>
+          <div><strong>Campos obrigatórios</strong><span>Preencha todos os campos para agendar.</span></div>
+        </li>
+        <li class="regra">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <div><strong>Datas futuras</strong><span>Não é possível agendar em datas passadas.</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <form class="formulario" id="agendamento-form" novalidate>
+      <h2>Dados do agendamento</h2>
+
+      <div class="field">
+        <label for="nome">Nome completo</label>
+        <input type="text" id="nome" name="nome" placeholder="Ana Souza" autocomplete="name" required>
+        <span class="error"></span>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="telefone">Telefone</label>
+          <input type="tel" id="telefone" name="telefone" placeholder="(85) 90000-0000" autocomplete="tel" inputmode="numeric" required>
+          <span class="error"></span>
+        </div>
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="ana@email.com" autocomplete="email" required>
+          <span class="error"></span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="veiculo">Veículo de interesse</label>
+        <select id="veiculo" name="veiculo" required>
+          <option value="" selected disabled>Selecione um veículo</option>
+          <option>BMW 320i 2022</option>
+          <option>Veículo 2</option>
+          <option>Veículo 3</option>
+        </select>
+        <span class="error"></span>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="data">Data</label>
+          <input type="date" id="data" name="data" required>
+          <span class="error"></span>
+        </div>
+        <div class="field">
+          <label for="horario">Horário</label>
+          <select id="horario" name="horario" required>
+            <option value="" selected disabled>Selecione</option>
+            <option>08:00</option><option>09:00</option><option>10:00</option>
+            <option>11:00</option><option>12:00</option><option>13:00</option>
+            <option>14:00</option><option>15:00</option><option>16:00</option>
+            <option>17:00</option>
+          </select>
+          <span class="error"></span>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn--light btn--block">Confirmar agendamento</button>
+
+      <div class="sucesso" id="sucesso" role="status" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
+        <span>Agendamento enviado! Entraremos em contato para confirmar.</span>
+      </div>
+    </form>
+  </main>
+
+  <script src="moto.js"></script>
+</body>
+</html>
