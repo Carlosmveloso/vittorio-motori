@@ -1,106 +1,458 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Instrument+Serif:ital@0;1&display=swap");
+/* ==========================================================
+   estoque.css  |  Vittorio Motori
+   As cores (--bg, --surface, --text...) e o .container vêm do
+   styles.css. Aqui fica só o que é da página de estoque.
+   ========================================================== */
 
-:root {
-  --fundo-principal: #0b0f0e;
-  --fundo-das-seçoes: #111715;
-  --cards-superfícies: #161d1b;
-  --bordas-divisores: #262e2b;
-  --texto-principal: #f2f0ea;
-  --texto-secundario: #9aa09c;
-  --destaque: #c8d1ba;
-  --botao-primaria: #f3f1ea;
+/* O conteúdo já tem respiro embaixo, então o rodapé não precisa de margem */
+.site-footer { margin-top: 0; }
 
-  --font-primaria: "DM Sans";
-  --font-secundaria: "Instrument Serif";
+/* Texto que só o leitor de tela enxerga */
+.so-leitor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* Textinho em maiúsculas que vem antes dos títulos */
+.estoque-rotulo {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
-body {
-  background-color: var(--fundo-principal);
-}
+/* ---------- Título da página ---------- */
 
 .estoque-titulo {
-  display: flex;
-  padding: 80px 120px 48px 120px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 18px;
-  align-self: stretch;
-  border-bottom: 1px solid var(--bordas-divisores);
+  padding: 80px 0 48px;
+  border-bottom: 1px solid var(--border);
 }
 
-.estoque-titulo_page {
-  color: var(--texto-secundario);
-  font-family: var(--font-primaria);
-  text-transform: uppercase;
-  letter-spacing: 2.16px;
-  font-size: 12px;
-}
-
+/* O clamp() encolhe o título aos poucos em telas menores */
 .estoque-titulo h1 {
-  font-family: var(--font-primaria);
-  color: var(--texto-principal);
-  font-size: 64px;
-  line-height: 110%;
-  letter-spacing: -1.28px;
+  margin: 18px 0;
+  font-size: clamp(44px, 6vw, 64px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
-.estoque-titulo h1 span {
-  color: var(--texto-secundario);
-  font-family: var(--font-secundaria);
-  font-size: 72px;
-  font-weight: 400;
-  font-style: italic;
-  line-height: 110%;
+.estoque-titulo h1 em {
+  font-size: 1.125em;
 }
 
-.estoque-titulo_description {
-  color: var(--texto-secundario);
+.estoque-descricao {
+  max-width: 620px;
+  color: var(--text-muted);
   font-size: 18px;
-  font-family: var(--font-primaria);
-  font-weight: 400;
-  line-height: 160%;
+  line-height: 1.6;
 }
 
+/* ---------- Busca e ordenação ---------- */
 
-/* =========================================================
-   Listagem de veículos
-   ========================================================= */
-
-body {
-  font-family: var(--font-primaria), sans-serif;
-  color: var(--texto-principal);
+.estoque-conteudo {
+  padding: 48px 0 96px;
 }
 
-.listagem {
-  padding: 48px 120px 96px;
+.estoque-barra {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.estoque-busca,
+.estoque-ordenar {
+  height: 52px;
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background-color: var(--bg);
+  color: var(--text);
+  font: 400 15px "DM Sans", sans-serif;
+  transition: border-color 0.2s;
+}
+
+.estoque-busca {
+  position: relative;
+  display: flex;
+  flex: 1 1 280px;
+  align-items: center;
+  gap: 14px;
+}
+
+.estoque-busca input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+}
+
+.estoque-busca input::placeholder {
+  color: var(--text-muted);
+  opacity: 1;
+}
+
+/* Tira o "x" azul que o Chrome e o Safari colocam em campos de busca */
+.estoque-busca input::-webkit-search-cancel-button {
+  appearance: none;
+}
+
+/* Esconde a setinha padrão do navegador e usa a do design */
+.estoque-ordenar {
+  width: 240px;
+  padding-right: 44px;
+  appearance: none;
+  background-image: url("../img/icones/seta-baixo.svg");
+  background-position: right 20px center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.estoque-busca:focus-within,
+.estoque-ordenar:focus-visible {
+  outline: 0;
+  border-color: var(--accent);
+}
+
+.filtros-abrir {
+  display: none;
+}
+
+/* ---------- Filtros ---------- */
+
+.estoque-grade {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  align-items: start;
+  gap: 32px;
+}
+
+.filtros {
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background-color: var(--surface);
+}
+
+.filtros-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.filtros-topo h2 {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 23px;
+}
+
+.filtros-limpar {
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font: 400 13px "DM Sans", sans-serif;
+  cursor: pointer;
+}
+
+.filtros-limpar:hover {
+  text-decoration: underline;
+}
+
+.filtros-grupo {
+  min-width: 0;
+  border: 0;
+}
+
+/* A linha que separa um grupo do outro */
+.filtros-grupo + .filtros-grupo {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+
+/* O legend normalmente fica "em cima" da borda do fieldset.
+   Com float ele se comporta como um texto comum, dentro da caixa. */
+.filtros-grupo legend {
+  float: left;
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+.filtros-grupo legend + * {
+  clear: both;
+}
+
+.filtros-lista {
+  display: grid;
+  gap: 14px;
+}
+
+.opcao {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+  font-size: 15px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.opcao input {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  appearance: none;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.opcao:hover input {
+  border-color: var(--text-muted);
+}
+
+.opcao input:checked {
+  border-color: var(--accent);
+  background: var(--accent) url("../img/icones/check.svg") center no-repeat;
+}
+
+.filtros-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* O chip é um checkbox disfarçado: a caixinha fica invisível por cima
+   e quem muda de cor é o texto que vem logo depois dela. */
+.chip {
+  position: relative;
+}
+
+.chip input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.chip span {
+  display: flex;
+  align-items: center;
+  height: 34px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 13px;
+  transition: border-color 0.2s;
+}
+
+.chip:hover span {
+  border-color: var(--text-muted);
+}
+
+.chip input:checked + span {
+  border-color: var(--accent);
+  background-color: var(--accent);
+  color: var(--bg);
+}
+
+.filtros-precos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.filtros-precos output {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background-color: var(--bg);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* Barra de preço. O JavaScript preenche --de e --ate com valores de 0 a 1,
+   que dizem onde começa e onde termina a parte colorida. */
+.faixa {
+  --de: 0;
+  --ate: 1;
+  position: relative;
+  height: 20px;
+}
+
+.faixa::before,
+.faixa::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  height: 4px;
+  border-radius: 2px;
+}
+
+.faixa::before {
+  left: 0;
+  right: 0;
+  background-color: var(--border);
+}
+
+/* Os 8px são metade da bolinha, para a cor terminar bem no meio dela */
+.faixa::after {
+  left: calc(8px + var(--de) * (100% - 16px));
+  right: calc(8px + (1 - var(--ate)) * (100% - 16px));
+  background-color: var(--accent);
+}
+
+/* Os dois controles ficam empilhados. Quem está em cima taparia o de baixo,
+   então a barra ignora o mouse e só as bolinhas aceitam o clique. */
+.faixa input {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  width: 100%;
+  height: 20px;
+  appearance: none;
+  outline: 0;
+  background: none;
+  pointer-events: none;
+}
+
+/* Chrome/Safari e Firefox chamam a bolinha por nomes diferentes. As regras
+   não podem ser juntadas: um navegador descarta o seletor que não conhece. */
+.faixa input::-webkit-slider-thumb {
+  width: 16px;
+  height: 16px;
+  appearance: none;
+  border-radius: 50%;
+  background-color: var(--btn-primary);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.faixa input::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: 0;
+  border-radius: 50%;
+  background-color: var(--btn-primary);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+/* Contorno para quem navega pelo teclado saber onde está */
+.filtros-limpar:focus-visible,
+.opcao input:focus-visible,
+.chip input:focus-visible + span,
+.card-botao:focus-visible,
+.estoque-conteudo .btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.faixa input:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.faixa input:focus-visible::-moz-range-thumb {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 /* ---------- Listagem ---------- */
 
-.listagem-info {
+.listagem-topo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 16px;
   margin-bottom: 20px;
-  color: var(--texto-secundario);
-  font-size: 15px;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 18px;
 }
 
 .listagem-carros {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(auto-fill, minmax(min(270px, 100%), 1fr));
+  gap: 24px;
 }
 
+/* ---------- Nenhum veículo encontrado ---------- */
+
 .listagem-vazia {
-  padding: 64px 24px;
-  border: 1px dashed var(--bordas-divisores);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 80px 40px;
+  border: 1px solid var(--border);
   border-radius: 20px;
-  color: var(--texto-secundario);
+  background-color: var(--surface);
   text-align: center;
+}
+
+/* Todo elemento com hidden some sozinho, mas qualquer display escrito no
+   CSS ganha dele. Por isso é preciso esconder de novo aqui. */
+.listagem-topo[hidden],
+.listagem-vazia[hidden],
+.filtros[hidden] {
+  display: none;
+}
+
+.listagem-vazia-icone {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  background-color: rgb(200 209 186 / 0.1);
+}
+
+.listagem-vazia h2 {
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.listagem-vazia h2 em {
+  font-size: 1.11em;
+}
+
+.listagem-vazia p {
+  max-width: 480px;
+  color: var(--text-muted);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.estoque-conteudo .btn {
+  height: 48px;
+  padding: 0 24px;
+  background-color: var(--btn-primary);
+  color: var(--bg);
+  font: 500 15px "DM Sans", sans-serif;
+  cursor: pointer;
+}
+
+/* Quando só a busca não achou nada, o aviso ocupa a largura toda */
+.estoque-grade.sem-filtros {
+  grid-template-columns: minmax(0, 1fr);
 }
 
 /* ---------- Card do veículo ---------- */
@@ -109,142 +461,167 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border: 1px solid var(--bordas-divisores);
+  border: 1px solid var(--border);
   border-radius: 20px;
-  background-color: var(--cards-superfícies);
+  background-color: var(--surface);
   transition: transform 0.2s, border-color 0.2s;
 }
 
 .card:hover {
   transform: translateY(-4px);
-  border-color: var(--texto-secundario);
+  border-color: var(--text-muted);
 }
 
 .card-midia {
   position: relative;
-  aspect-ratio: 16 / 10;
-  background: linear-gradient(180deg, #1b2321, var(--fundo-das-seçoes));
+  height: 180px;
+  background: linear-gradient(#1b2422, var(--bg-section));
 }
 
 .card-midia img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
 }
 
 .card-tag {
   position: absolute;
-  top: 16px;
-  padding: 5px 12px;
+  top: 14px;
+  display: flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 10px;
+  border: 1px solid var(--border);
   border-radius: 999px;
-  font-size: 13px;
+  background-color: rgb(11 15 14 / 0.75);
+  font-size: 12px;
+  font-weight: 500;
 }
 
 .card-tag-km {
-  left: 16px;
-  background-color: var(--fundo-principal);
-  color: var(--texto-principal);
+  left: 14px;
 }
 
 .card-tag-km.is-novo {
-  background-color: var(--destaque);
-  color: var(--fundo-principal);
+  border-color: var(--accent);
+  background-color: var(--accent);
+  color: var(--bg);
 }
 
 .card-tag-status {
-  right: 16px;
-  border: 1px solid var(--texto-secundario);
-  background-color: rgb(11 15 14 / 0.6);
-  color: var(--texto-principal);
+  right: 14px;
+  border-color: rgb(200 209 186 / 0.3);
+  color: var(--accent);
 }
 
 .card-corpo {
   display: flex;
   flex: 1;
   flex-direction: column;
-  padding: 28px 24px 24px;
+  gap: 4px;
+  padding: 20px;
+  line-height: 1.3;
 }
 
-.card-marca {
-  color: var(--texto-secundario);
-  font-size: 14px;
+.card-marca,
+.card-resumo {
+  color: var(--text-muted);
+  font-size: 13px;
 }
 
 .card-nome {
-  margin: 6px 0 8px;
-  font-size: 26px;
-  font-weight: 400;
+  font-size: 22px;
+  font-weight: 500;
 }
 
-.card-resumo {
-  color: var(--texto-secundario);
-  font-size: 15px;
-}
-
+/* O margin-top: auto empurra o rodapé para o fim do card. Assim os preços
+   ficam alinhados mesmo quando um nome ocupa duas linhas. */
 .card-rodape {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
+  gap: 8px 4px;
   margin-top: auto;
-  padding-top: 28px;
+  padding-top: 16px;
 }
 
 .card-preco {
-  font-size: 22px;
+  font-size: 20px;
+  font-weight: 500;
   white-space: nowrap;
 }
 
 .card-botao {
-  padding: 11px 22px;
-  border: 1px solid var(--bordas-divisores);
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 18px;
+  border: 1px solid var(--border);
   border-radius: 999px;
-  color: var(--texto-principal);
-  font-size: 15px;
-  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
   white-space: nowrap;
   transition: background-color 0.2s, color 0.2s;
 }
 
 .card-botao:hover {
-  background-color: var(--botao-primaria);
-  color: var(--fundo-principal);
+  background-color: var(--btn-primary);
+  color: var(--bg);
 }
 
 /* Vendido / indisponível: card "apagado" */
 .card.is-indisponivel {
-  opacity: 0.55;
+  opacity: 0.6;
 }
 
 .card.is-indisponivel .card-tag-status {
-  border-color: transparent;
-  background-color: var(--bordas-divisores);
-  color: var(--texto-secundario);
+  border-color: var(--border);
+  color: var(--text-muted);
 }
 
-/* ---------- Responsivo ---------- */
+/* ---------- Telas menores ---------- */
 
-@media (max-width: 1100px) {
-  .estoque-titulo,
-  .listagem {
-    padding-left: 48px;
-    padding-right: 48px;
+/* Aqui os filtros vão para cima dos carros. Como são altos, ficam
+   escondidos até a pessoa tocar em "Mostrar filtros". */
+@media (max-width: 900px) {
+  .estoque-grade {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .filtros-abrir {
+    display: block;
+  }
+
+  .filtros:not(.is-aberto) {
+    display: none;
+  }
+
+  .estoque-ordenar,
+  .filtros-abrir {
+    flex: 1 1 160px;
+    width: auto;
+  }
+
+  .estoque-conteudo .filtros-abrir {
+    height: 52px;
+    border-color: var(--border);
+    border-radius: 12px;
+    background-color: var(--surface);
+    color: var(--text);
   }
 }
 
 @media (max-width: 640px) {
-  .estoque-titulo,
-  .listagem {
-    padding-left: 16px;
-    padding-right: 16px;
+  .estoque-titulo {
+    padding: 48px 0 32px;
   }
 
-  .estoque-titulo h1 {
-    font-size: 44px;
+  .estoque-conteudo {
+    padding: 32px 0 64px;
   }
 
-  .estoque-titulo h1 span {
-    font-size: 50px;
+  .listagem-vazia {
+    padding: 48px 24px;
   }
 }
