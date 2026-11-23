@@ -1,83 +1,124 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estoque | Vittorio Motori</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- O "opsz" deixa a DM Sans mais apertada nos títulos grandes, igual ao Figma -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..600&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet" />
+    <!-- Primeiro o estilo global, depois o da página -->
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/estoque.css" />
-    <title>Estoque | Vittorio Motori</title>
   </head>
   <body>
-    <!-- Menu (o mesmo das outras páginas) -->
-    <header class="site-header">
-      <div class="container header-inner">
-        <a href="index.html" class="logo">Vittorio Motori</a>
-        <nav aria-label="Menu principal">
-          <ul class="nav-list">
-            <li><a href="index.html">Início</a></li>
-            <li><a href="estoque.html" aria-current="page">Estoque</a></li>
-            <li><a href="financiamento.html">Financiamento</a></li>
-            <li><a href="teste-drive.html">Test Drive</a></li>
-            <li><a href="sobre.html">Sobre</a></li>
-            <li><a href="contato.html">Contato</a></li>
-          </ul>
-        </nav>
-        <a href="teste-drive.html" class="btn btn-primary btn-sm">Agendar test drive</a>
-      </div>
-    </header>
+    <!-- O menu vem de componentes/header.html -->
+    <div data-componente="header"></div>
 
     <main>
       <section class="estoque-titulo">
-        <p class="estoque-titulo_page">Estoque</p>
-        <h1>Nosso <span>estoque</span></h1>
-        <p class="estoque-titulo_description">
-          Conheça todos os veículos disponíveis na Vittorio Motori.
-        </p>
+        <div class="container">
+          <p class="estoque-rotulo">Estoque</p>
+          <h1>Nosso <em>estoque</em></h1>
+          <p class="estoque-descricao">
+            Busque pelo modelo e use os filtros de marca, categoria, condição e
+            preço para encontrar o carro certo.
+          </p>
+        </div>
       </section>
 
-      <!-- Listagem (os cards são criados pelo js/estoque.js) -->
-      <section class="listagem" aria-label="Listagem de veículos">
-        <p id="listagem-total" class="listagem-info"></p>
-        <div id="listagem-carros" class="listagem-carros"></div>
-        <p id="listagem-vazia" class="listagem-vazia" hidden>
-          Nenhum veículo disponível no momento.
-        </p>
-      </section>
-    </main>
+      <div class="container estoque-conteudo">
+        <!-- Busca e ordenação. O form="filtros" liga o campo de busca ao
+             formulário lá de baixo, mesmo estando fora dele. Assim o botão
+             "Limpar" apaga a busca junto com os filtros. -->
+        <div class="estoque-barra">
+          <label class="estoque-busca">
+            <span class="so-leitor">Buscar pelo modelo</span>
+            <img src="img/icones/busca.svg" alt="" />
+            <input type="search" name="busca" form="filtros" placeholder="Buscar pelo modelo..." autocomplete="off" />
+          </label>
 
-    <!-- Rodapé (o mesmo das outras páginas) -->
-    <footer class="site-footer">
-      <div class="container footer-grid">
-        <div>
-          <a href="index.html" class="logo">Vittorio Motori</a>
-          <p class="muted">Carros novos e seminovos selecionados, com atendimento próximo do primeiro contato à entrega da chave.</p>
+          <!-- A ordenação fica fora do formulário de propósito: limpar os
+               filtros não deve bagunçar a ordem que a pessoa escolheu. -->
+          <select id="ordenar" class="estoque-ordenar" aria-label="Ordenar por">
+            <option value="menor">Menor preço</option>
+            <option value="maior">Maior preço</option>
+          </select>
+
+          <!-- Só aparece no celular e no tablet -->
+          <button type="button" id="filtros-abrir" class="btn filtros-abrir" aria-expanded="false" aria-controls="filtros">
+            Mostrar filtros
+          </button>
         </div>
-        <div>
-          <h3>Navegação</h3>
-          <ul>
-            <li><a href="index.html">Início</a></li>
-            <li><a href="estoque.html">Estoque</a></li>
-            <li><a href="financiamento.html">Financiamento</a></li>
-            <li><a href="teste-drive.html">Test Drive</a></li>
-            <li><a href="sobre.html">Sobre</a></li>
-            <li><a href="contato.html">Contato</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Atendimento</h3>
-          <p>Segunda a sábado<br>8h às 18h<br>(85) 0000-0000</p>
-        </div>
-        <div>
-          <h3>Endereço</h3>
-          <p>Avenida Exemplo, 1000<br>Fortaleza, Ceará</p>
-          <a href="https://wa.me/5585000000000" class="btn btn-outline btn-sm" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+
+        <div id="estoque-grade" class="estoque-grade">
+          <form id="filtros" class="filtros">
+            <div class="filtros-topo">
+              <h2>Filtros</h2>
+              <button type="button" class="filtros-limpar" data-limpar>Limpar</button>
+            </div>
+
+            <!-- As marcas e categorias são criadas pelo js/estoque.js, a
+                 partir dos carros que existem no dados.js -->
+            <fieldset class="filtros-grupo">
+              <legend class="estoque-rotulo">Marca</legend>
+              <div id="filtro-marcas" class="filtros-lista"></div>
+            </fieldset>
+
+            <fieldset class="filtros-grupo">
+              <legend class="estoque-rotulo">Categoria</legend>
+              <div id="filtro-categorias" class="filtros-chips"></div>
+            </fieldset>
+
+            <fieldset class="filtros-grupo">
+              <legend class="estoque-rotulo">Condição</legend>
+              <div class="filtros-chips">
+                <label class="chip"><input type="checkbox" name="condicao" value="Novo" /><span>Novo</span></label>
+                <label class="chip"><input type="checkbox" name="condicao" value="Seminovo" /><span>Seminovo</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="filtros-grupo">
+              <legend class="estoque-rotulo">Faixa de preço</legend>
+              <div class="filtros-precos">
+                <output id="preco-min-texto"></output>
+                <output id="preco-max-texto"></output>
+              </div>
+              <!-- O HTML não tem um controle com duas bolinhas, então são dois
+                   controles normais, um em cima do outro. O visual da barra
+                   fica por conta do CSS. -->
+              <div id="faixa" class="faixa">
+                <input type="range" id="preco-min" name="precoMin" min="0" step="1" aria-label="Preço mínimo" />
+                <input type="range" id="preco-max" name="precoMax" min="0" step="1" aria-label="Preço máximo" />
+              </div>
+            </fieldset>
+          </form>
+
+          <!-- Resultados (os cards são criados pelo js/estoque.js) -->
+          <section class="listagem" aria-label="Veículos encontrados">
+            <div id="listagem-topo" class="listagem-topo">
+              <p id="listagem-total" role="status"></p>
+              <p id="listagem-ordem"></p>
+            </div>
+
+            <div id="listagem-carros" class="listagem-carros"></div>
+
+            <div id="listagem-vazia" class="listagem-vazia" hidden>
+              <span class="listagem-vazia-icone"><img src="img/icones/busca-grande.svg" alt="" /></span>
+              <h2>Nenhum veículo <em>encontrado</em></h2>
+              <p>Tente buscar por outro modelo ou limpe os filtros para ver todo o estoque.</p>
+              <button type="button" class="btn btn-primary" data-limpar>Limpar filtros</button>
+            </div>
+          </section>
         </div>
       </div>
-      <p class="container footer-base">
-        <span>© <span class="ano-atual">2026</span> Vittorio Motori · Projeto acadêmico</span>
-        <span>Feito com HTML, CSS e JavaScript</span>
-      </p>
-    </footer>
+    </main>
+
+    <!-- O rodapé vem de componentes/footer.html -->
+    <div data-componente="footer"></div>
+
+    <script src="js/componentes.js"></script>
     <script src="js/dados.js"></script>
     <script src="js/estoque.js"></script>
   </body>

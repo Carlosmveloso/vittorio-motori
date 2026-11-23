@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sobre | Vittorio Motori</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- O "opsz" deixa a DM Sans mais apertada nos títulos grandes, igual ao Figma -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..600&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet" />
+    <!-- Primeiro o estilo global, depois o da página -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/sobre.css" />
+  </head>
+  <body>
+    <!-- O menu vem de componentes/header.html -->
+    <div data-componente="header"></div>
+
+    <main>
+      <!-- Apresentação da loja -->
+      <section class="sobre-hero">
+        <div class="container sobre-hero-grade">
+          <div>
+            <p class="sobre-rotulo">Sobre nós</p>
+            <h1>A paixão por carros, com <em>cuidado</em>.</h1>
+            <p class="sobre-intro">
+              A Vittorio Motori reúne carros novos e seminovos selecionados em
+              um só lugar. Nosso jeito de trabalhar é simples: informação clara,
+              atendimento próximo e respeito pelo tempo de quem nos visita.
+            </p>
+          </div>
+
+          <!-- Quando tiver a foto de verdade, é só trocar a imagem aqui -->
+          <figure class="sobre-foto">
+            <img src="img/carro-suv.svg" alt="Desenho de um carro visto de lado" />
+            <figcaption class="sobre-legenda">Foto da loja</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Valores. Os ícones têm alt vazio porque são só enfeite: o título
+           do card já diz tudo, e o leitor de tela pula a imagem. -->
+      <section class="sobre-valores" aria-labelledby="valores-titulo">
+        <div class="container">
+          <p class="sobre-rotulo">Nossos valores</p>
+          <h2 id="valores-titulo">O que nos <em>move</em></h2>
+
+          <div class="sobre-cards">
+            <article class="sobre-card">
+              <span class="sobre-icone"><img src="img/icones/escudo.svg" alt="" /></span>
+              <h3>Procedência</h3>
+              <p>Carros selecionados e com informações claras de ano e quilometragem.</p>
+            </article>
+            <article class="sobre-card">
+              <span class="sobre-icone"><img src="img/icones/olho.svg" alt="" /></span>
+              <h3>Transparência</h3>
+              <p>Preço, ficha técnica e condições sempre à vista do cliente.</p>
+            </article>
+            <article class="sobre-card">
+              <span class="sobre-icone"><img src="img/icones/usuario.svg" alt="" /></span>
+              <h3>Atendimento próximo</h3>
+              <p>Acompanhamos você do primeiro contato à entrega da chave.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Endereço e horário -->
+      <section class="sobre-local" aria-labelledby="local-titulo">
+        <div class="container sobre-local-grade">
+          <div>
+            <p class="sobre-rotulo">Visite a loja</p>
+            <h2 id="local-titulo">Onde <em>estamos</em></h2>
+
+            <ul class="sobre-infos">
+              <li>
+                <span class="sobre-icone"><img src="img/icones/pin.svg" alt="" /></span>
+                <div>
+                  <h3>Endereço</h3>
+                  <p>Avenida Exemplo, 1000 — Fortaleza, Ceará</p>
+                </div>
+              </li>
+              <li>
+                <span class="sobre-icone"><img src="img/icones/relogio.svg" alt="" /></span>
+                <div>
+                  <h3>Horário de funcionamento</h3>
+                  <p>Segunda a sábado, das 8h às 18h</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- O mapa é um desenho feito só com CSS, já que o endereço é
+               fictício. As ruas e a grade estão no sobre.css. -->
+          <figure class="sobre-mapa">
+            <span class="sobre-marcador"><img src="img/icones/pin-escuro.svg" alt="Marcador da loja no mapa" /></span>
+            <figcaption class="sobre-legenda">Mapa</figcaption>
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <!-- O rodapé vem de componentes/footer.html -->
+    <div data-componente="footer"></div>
+
+    <script src="js/componentes.js"></script>
+  </body>
+</html>

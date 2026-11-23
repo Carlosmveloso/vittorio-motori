@@ -7,18 +7,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <!-- Estilo global: é dele que vem o visual do menu e do rodapé -->
+  <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="moto.css">
 </head>
 <body>
-  <header class="header">
-    <div class="header__inner">
-      <a href="index.html" class="logo">Vittorio Motori</a>
-      <nav class="nav" aria-label="Principal">
-        <a href="test-drive.html" aria-current="page">Test Drive</a>
-      </nav>
-      <a href="test-drive.html" class="btn btn--light btn--sm">Agendar test drive</a>
-    </div>
-  </header>
+  <!-- O menu vem de componentes/header.html -->
+  <div data-componente="header"></div>
 
   <main class="agendamento">
     <div class="texto">
@@ -103,6 +98,10 @@
     </form>
   </main>
 
+  <!-- O rodapé vem de componentes/footer.html -->
+  <div data-componente="footer"></div>
+
+  <script src="js/componentes.js"></script>
   <script src="moto.js"></script>
 </body>
 </html>
