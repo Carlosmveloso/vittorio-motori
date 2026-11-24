@@ -7,18 +7,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="teste-drive.css">
 </head>
 <body>
-  <header class="header">
-    <div class="header__inner">
-      <a href="index.html" class="logo">Vittorio Motori</a>
-      <nav class="nav" aria-label="Principal">
-        <a href="test-drive.html" aria-current="page">Test Drive</a>
-      </nav>
-      <a href="test-drive.html" class="btn btn--light btn--sm">Agendar test drive</a>
-    </div>
-  </header>
+  <div data-componente="header"></div>
 
   <main class="agendamento">
     <div class="texto">
@@ -69,8 +62,17 @@
         <select id="veiculo" name="veiculo" required>
           <option value="" selected disabled>Selecione um veículo</option>
           <option>BMW 320i 2022</option>
-          <option>Veículo 2</option>
-          <option>Veículo 3</option>
+          <option>AUDI Q5 2021</option>
+          <option>HYUNDAI Elantra 2020 </option>
+          <option>TOYOTA Corolla 2023</option>
+          <option>CHEVROLET Onix 2024</option>
+          <option>HONDA Civic Touring 2021</option>
+          <option>BYD Dolphin Mini 2027</option>
+          <option>Haval H9 2026/27</option>
+          <option>Hyundai HB20 2025</option>
+          <option>Renault Duster 2024</option>
+          <option>Ferrari Roma Spider 2024</option>
+          
         </select>
         <span class="error"></span>
       </div>
@@ -103,6 +105,8 @@
     </form>
   </main>
 
+  <div data-componente="footer"></div>
+  <script src="js/componentes.js"></script>
   <script src="teste_drive.js"></script>
-</body>
-</html>
+
+</HTML> 
