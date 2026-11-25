@@ -110,8 +110,10 @@
   min-height: 130px;
   resize: vertical;
 }
-.contato-campo input.invalido {
+.contato-campo input.invalido,
+.contato-campo textarea.invalido {
   border-color: #e5484d;
+
 }
 
 /* E-mail e telefone lado a lado */
