@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fontes do site, usadas no menu, no rodapé e no resto da página -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..600&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css"> 
     <title>Vittorio Motori</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,16 +19,19 @@
     <link rel="stylesheet" href="css/inicio.css">
 </head>
 <body>
-    <!-- Menu -->
+    <!-- O menu vem de componentes/header.html -->
     <div data-componente="header"></div>
 
-    <main class="pagina-inicial">
-        <!-- Banner -->
-        <section class="banner" aria-labelledby="banner-titulo">
-            <div class="banner-container">
-                <div class="banner-conteudo">
-                    <span class="banner-identificacao">CONCESSIONÁRIA · FORTALEZA</span>
-                    <h1 id="banner-titulo">Carros que contam<br><span>histórias</span>.</h1>
+    <main> 
+        <section class="banner">
+            <div class="banner-conteudo">
+                    <span class="banner-identificacao">
+                        CONCESSIONÁRIA · FORTALEZA
+                    </span>
+                    <h1>
+                        Carros que contam
+                        <span>histórias.</span>
+                    </h1>
                     <p class="banner-descricao">
                         Novos e seminovos selecionados, com atendimento próximo do primeiro contato à entrega da chave.
                     </p>
@@ -140,8 +148,9 @@
 
     </main>
 
-    <!-- Rodapé -->
+    <!-- O rodapé vem de componentes/footer.html -->
     <div data-componente="footer"></div>
+
     <script src="js/componentes.js"></script>
 </body>
 </html>

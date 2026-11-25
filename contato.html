@@ -12,22 +12,8 @@
   <link rel="stylesheet" href="css/contato.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="index.html" class="logo">Vittorio Motori</a>
-      <nav aria-label="Menu principal">
-        <ul class="nav-list">
-          <li><a href="index.html">Início</a></li>
-          <li><a href="estoque.html">Estoque</a></li>
-          <li><a href="financiamento.html">Financiamento</a></li>
-          <li><a href="teste-drive.html">Test Drive</a></li>
-          <li><a href="sobre.html">Sobre</a></li>
-          <li><a href="contato.html" aria-current="page">Contato</a></li>
-        </ul>
-      </nav>
-      <a href="teste-drive.html" class="btn btn-primary btn-sm">Agendar test drive</a>
-    </div>
-  </header>
+  <!-- O menu vem de componentes/header.html -->
+  <div data-componente="header"></div>
 
   <main>
     <!-- Apresentação -->
@@ -131,39 +117,10 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <a href="index.html" class="logo">Vittorio Motori</a>
-        <p class="muted">Carros novos e seminovos selecionados, com atendimento próximo do primeiro contato à entrega da chave.</p>
-      </div>
-      <div>
-        <h3>Navegação</h3>
-        <ul>
-          <li><a href="index.html">Início</a></li>
-          <li><a href="estoque.html">Estoque</a></li>
-          <li><a href="financiamento.html">Financiamento</a></li>
-          <li><a href="teste-drive.html">Test Drive</a></li>
-          <li><a href="sobre.html">Sobre</a></li>
-          <li><a href="contato.html">Contato</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Atendimento</h3>
-        <p>Segunda a sábado<br>8h às 18h<br>(85) 0000-0000</p>
-      </div>
-      <div>
-        <h3>Endereço</h3>
-        <p>Avenida Exemplo, 1000<br>Fortaleza, Ceará</p>
-        <a href="https://wa.me/5585000000000" class="btn btn-outline btn-sm" target="_blank" rel="noopener">Chamar no WhatsApp</a>
-      </div>
-    </div>
-    <p class="container footer-base">
-      <span>© 2026 Vittorio Motori · Projeto acadêmico</span>
-      <span>Feito com HTML, CSS e JavaScript</span>
-    </p>
-  </footer>
+  <!-- O rodapé vem de componentes/footer.html -->
+  <div data-componente="footer"></div>
 
+  <script src="js/componentes.js"></script>
   <script src="js/contato.js"></script>
 </body>
 </html>
