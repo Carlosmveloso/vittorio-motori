@@ -2,7 +2,7 @@
 
 Site de uma concessionária fictícia de carros novos e seminovos, desenvolvido como Projeto Final da disciplina usando apenas **HTML, CSS e JavaScript**.
 
-🔗 **Site:** https://usuario.github.io/vittorio-motori
+🔗 **Site:** https://vittorio-motori.vercel.app/index.html
 🎨 **Design (Figma):** https://www.figma.com/design/oIA2ZBjJT8ayKzNfuWPYIw
 
 ---
